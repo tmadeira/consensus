@@ -1,31 +1,7 @@
 import simulation
 
-simulation.run(3, tp="cycle", memory=[1])
-simulation.run(3, tp="cycle", memory=[0.8, 0.2])
-simulation.run(3, tp="cycle", memory=[0.6, 0.3, 0.1])
-simulation.run(3, tp="cycle", memory=[0.4, 0.3, 0.2, 0.1])
+for n in [3, 5, 7, 11, 17]:
+    for tp in ['cycle', 'complete']:
+        for mem in [[1], [0.8, 0.2], [0.6, 0.3, 0.1]]:
+            print(n, tp, mem, simulation.run(n, tp=tp, memory=mem))
 
-simulation.run(5, tp="cycle", memory=[1])
-simulation.run(5, tp="cycle", memory=[0.8, 0.2])
-simulation.run(5, tp="cycle", memory=[0.6, 0.3, 0.1])
-simulation.run(5, tp="cycle", memory=[0.4, 0.3, 0.2, 0.1])
-
-simulation.run(7, tp="cycle", memory=[1])
-simulation.run(7, tp="cycle", memory=[0.8, 0.2])
-simulation.run(7, tp="cycle", memory=[0.6, 0.3, 0.1])
-simulation.run(7, tp="cycle", memory=[0.4, 0.3, 0.2, 0.1])
-
-simulation.run(11, tp="cycle", memory=[1])
-simulation.run(11, tp="cycle", memory=[0.8, 0.2])
-simulation.run(11, tp="cycle", memory=[0.6, 0.3, 0.1])
-simulation.run(11, tp="cycle", memory=[0.4, 0.3, 0.2, 0.1])
-
-simulation.run(17, tp="cycle", memory=[1])
-simulation.run(17, tp="cycle", memory=[0.8, 0.2])
-simulation.run(17, tp="cycle", memory=[0.6, 0.3, 0.1])
-simulation.run(17, tp="cycle", memory=[0.4, 0.3, 0.2, 0.1])
-
-simulation.run(31, tp="cycle", memory=[1])
-simulation.run(31, tp="cycle", memory=[0.8, 0.2])
-simulation.run(31, tp="cycle", memory=[0.6, 0.3, 0.1])
-simulation.run(31, tp="cycle", memory=[0.4, 0.3, 0.2, 0.1])

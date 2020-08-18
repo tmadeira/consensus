@@ -53,6 +53,4 @@ def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[]):
 
         counts.append(count)
 
-    print("n =", n, "; colors =", colors, "; init =", initial_labels[:n], "; mem =", memory)
-    print("tp =", tp, "; exp. rounds =", np.mean(counts), "±", np.std(counts))
-    print("")
+    return [np.mean(counts), np.std(counts)]
