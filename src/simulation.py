@@ -42,7 +42,7 @@ def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[]):
         labels = initial_labels
 
         count = 0
-        while not np.all(labels[:n] == labels[0]):
+        while not np.all(labels == labels[0]):
             next_labels = np.empty(len(labels))
             for i in range(n):
                 next_labels[i] = labels[np.random.choice(e[i], p=w[i])]
