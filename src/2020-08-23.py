@@ -1,11 +1,11 @@
 """
 Experiment: Redo last experiment but for smaller N, testing no memory and
-increasing times from 200 to 800 in order to seek smoother graphs.
+increasing times from 200 to 1000 in order to seek smoother graphs.
 
 Setup:
-- n_1 = 17, n_2 = 31, n_3 = 43, times = 800
+- n_1 = 17, n_2 = 31, n_3 = 43, times = 1000
 - 3 graphs (alternate cycle, worst cycle and random complete graph)
-- 30 tests for each graph, with memory uniformly ranging from [0.01, 0.99] to [1.00, 0.00]
+- 40 tests for each graph, with memory uniformly ranging from [0.01, 0.99] to [1.00, 0.00]
 """
 
 from multiprocessing import Pool
@@ -31,7 +31,7 @@ for n in N:
 
 # Create tasks.
 tasks = []
-for i in np.linspace(0.1, 1.00, num=30):
+for i in np.linspace(0.1, 1.00, num=40):
   for j in range(len(setup)):
     tasks.append({
       'mem': [i, 1-i],
@@ -47,7 +47,7 @@ def run_task(task):
     tp=task['tp'],
     memory=task['mem'],
     ID='%d %f' % (task['setup'], task['mem'][0]),
-    times=800,
+    times=1000,
   )
 
 p = Pool(P)
