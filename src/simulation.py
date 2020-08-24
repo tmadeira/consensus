@@ -14,7 +14,7 @@ def add_memory(e, w, labels, memory):
 
     return (e, w, labels)
 
-def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[]):
+def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[], ID='#'):
     np.random.seed(seed)
 
     # Make graph.
@@ -53,4 +53,5 @@ def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[]):
 
         counts.append(count)
 
+    print(ID, np.mean(counts), np.std(counts), flush=True)
     return [np.mean(counts), np.std(counts)]
