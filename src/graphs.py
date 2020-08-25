@@ -1,6 +1,8 @@
 # A graph is represented by a pair of arrays `(e, w)` where `e` is an adjacency
 # list and `w[i][j]` is the weight of the edge `(i, e[i][j])`.
 
+import math
+
 def make_cycle(n):
     e = []
     w = []
@@ -30,4 +32,26 @@ def make_complete(n):
                 continue
             e[i].append(j)
             w[i].append(1.0 / (n-1))
+    return (e, w)
+
+def make_gridcycle(n):
+    m = int(math.sqrt(n) + 0.5)
+    if m ** 2 != n:
+        raise Exception("n must be a perfect square to generate a gridcycle")
+
+    def grid_id(x, y):
+        return (x % m) * m + (y % m)
+
+    e = []
+    w = []
+    for i in range(n):
+        e.append([])
+        w.append([])
+
+        x = i // m
+        y = i % m
+        for j in [grid_id(x-1, y), grid_id(x, y-1), grid_id(x+1, y), grid_id(x, y+1)]:
+            e[i].append(j)
+            w[i].append(0.25)
+
     return (e, w)

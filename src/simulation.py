@@ -24,6 +24,8 @@ def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[], ID='#
         (e, w) = graphs.make_path(n)
     elif tp == "complete":
         (e, w) = graphs.make_complete(n)
+    elif tp == "gridcycle":
+        (e, w) = graphs.make_gridcycle(n)
     else:
         raise Exception("unknown type")
 
