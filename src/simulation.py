@@ -54,4 +54,4 @@ def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[], ID='#
         counts.append(count)
 
     print(ID, np.mean(counts), np.std(counts), flush=True)
-    return [np.mean(counts), np.std(counts)]
+    return [np.mean(counts), np.std(counts), counts]
