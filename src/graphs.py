@@ -55,3 +55,33 @@ def make_gridcycle(n):
             w[i].append(0.25)
 
     return (e, w)
+
+def make_expandedcycle(n):
+    m = int(math.sqrt(n) + 0.5)
+    if m ** 2 != n:
+        raise Exception("n must be a perfect square to generate a expandedcycle")
+
+    e = []
+    w = []
+    for i in range(n):
+        e.append([])
+        w.append([])
+
+        start = (i // m) * m
+        end = start + m
+
+        weight = 1.0 / (m-1)
+        if i == start:
+            weight = 1.0 / (m+1)
+            e[i].append((i-m) % n)
+            w[i].append(weight)
+            e[i].append((i+m) % n)
+            w[i].append(weight)
+
+        for j in range(start, end):
+            if i == j:
+                continue
+            e[i].append(j)
+            w[i].append(weight)
+
+    return (e, w)
