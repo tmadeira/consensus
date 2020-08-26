@@ -28,25 +28,22 @@ tps = [
 
 # Create tasks.
 tasks = []
-seed = 0
 for n in N:
     for p in np.linspace(0.1, 1.00, num=buckets):
         for tp in tps:
             tasks.append({
-              'seed': seed,
               'mem': [p, 1-p],
               'n': n,
               'tp': tp,
             })
-            seed += 1
 
 def run_task(task):
     return simulation.run(task['n'],
-        seed=task['seed'],
         tp=task['tp'],
         memory=task['mem'],
         ID='%s %f' % (task['tp'], task['mem'][0]),
         times=times,
+        rand_init=True,
     )
 
 p = Pool(P)

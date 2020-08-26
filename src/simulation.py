@@ -14,7 +14,7 @@ def add_memory(e, w, labels, memory):
 
     return (e, w, labels)
 
-def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[], ID='#'):
+def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[], ID='#', rand_init=False):
     np.random.seed(seed)
 
     # Make graph.
@@ -32,6 +32,8 @@ def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[], ID='#
         raise Exception("unknown type")
 
     # Set initial labels.
+    if rand_init:
+        pass
     if len(init) > 0:
         initial_labels = np.array(init)
     else:
@@ -43,7 +45,10 @@ def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[], ID='#
     # Run simulation.
     counts = []
     for t in range(times):
-        labels = initial_labels
+        if rand_init:
+            labels = np.random.randint(0, colors, size=n)
+        else:
+            labels = initial_labels
 
         count = 0
         while not np.all(labels == labels[0]):
