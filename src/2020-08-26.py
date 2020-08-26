@@ -23,7 +23,7 @@ tps = [
     'cycle',
     'complete',
     'gridcycle',
-    #'expandedcycle',
+    'expandedcycle',
 ]
 
 # Create tasks.
