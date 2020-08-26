@@ -1,7 +1,12 @@
+import copy
 import numpy as np
 import graphs
 
 def add_memory(e, w, labels, memory):
+    e = copy.deepcopy(e)
+    w = copy.deepcopy(w)
+    labels = np.copy(labels)
+
     n = len(e)
     labels = np.tile(labels, len(memory))
 
@@ -15,46 +20,50 @@ def add_memory(e, w, labels, memory):
     return (e, w, labels)
 
 def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[], ID='#', rand_init=False):
-    np.random.seed(seed)
+    rand = np.random.RandomState(seed)
 
     # Make graph.
     if tp == "cycle":
-        (e, w) = graphs.make_cycle(n)
+        (ee, ww) = graphs.make_cycle(n)
     elif tp == "path":
-        (e, w) = graphs.make_path(n)
+        (ee, ww) = graphs.make_path(n)
     elif tp == "complete":
-        (e, w) = graphs.make_complete(n)
+        (ee, ww) = graphs.make_complete(n)
     elif tp == "gridcycle":
-        (e, w) = graphs.make_gridcycle(n)
+        (ee, ww) = graphs.make_gridcycle(n)
     elif tp == "expandedcycle":
-        (e, w) = graphs.make_expandedcycle(n)
+        (ee, ww) = graphs.make_expandedcycle(n)
     else:
         raise Exception("unknown type")
 
     # Set initial labels.
     if rand_init:
         pass
-    if len(init) > 0:
-        initial_labels = np.array(init)
+    elif len(init) > 0:
+        init = np.array(init)
     else:
-        initial_labels = np.random.randint(0, colors, size=n)
+        init = rand.randint(0, colors, size=n)
 
-    # Add memory.
-    (e, w, initial_labels) = add_memory(e, w, initial_labels, memory)
+    if not rand_init:
+        # Add memory.
+        (e, w, initial_labels) = add_memory(ee, ww, initial_labels, memory)
 
     # Run simulation.
     counts = []
     for t in range(times):
         if rand_init:
-            labels = np.random.randint(0, colors, size=n)
+            labels = rand.randint(0, colors, size=n)
+
+            # Add memory.
+            (e, w, labels) = add_memory(ee, ww, labels, memory)
         else:
-            labels = initial_labels
+            labels = init
 
         count = 0
         while not np.all(labels == labels[0]):
             next_labels = np.empty(len(labels))
             for i in range(n):
-                next_labels[i] = labels[np.random.choice(e[i], p=w[i])]
+                next_labels[i] = labels[rand.choice(e[i], p=w[i])]
             for i in range(n, len(labels)):
                 next_labels[i] = labels[i-n]
             labels = next_labels
