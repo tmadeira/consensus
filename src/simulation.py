@@ -19,7 +19,7 @@ def add_memory(e, w, labels, memory):
 
     return (e, w, labels)
 
-def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[], ID='#', rand_init=False):
+def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[], ID='#', rand_init=False, quiet=False):
     rand = np.random.RandomState(seed)
 
     # Make graph.
@@ -71,5 +71,7 @@ def run(n, colors=2, times=200, seed=0, memory=[1.0], tp="cycle", init=[], ID='#
 
         counts.append(count)
 
-    print(ID, np.mean(counts), np.std(counts), flush=True)
-    return [np.mean(counts), np.std(counts), counts]
+    if not quiet:
+        print(ID, np.mean(counts), np.std(counts), flush=True)
+
+    return [np.mean(counts), np.std(counts), np.median(counts), counts]
