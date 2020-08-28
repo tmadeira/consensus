@@ -19,8 +19,8 @@ workers = [
 
 # remaining parameters
 N = [441]
-buckets = 40
-times = 200
+buckets = 20
+times = 300
 tps = [
     'path',
     'cycle',
