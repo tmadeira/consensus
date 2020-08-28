@@ -17,7 +17,7 @@ workers = [
     {'name': 'gauy-irmao-1', 'cores': 5},
     {'name': 'gauy-irmao-2', 'cores': 4},
     {'name': 'lu-mac', 'cores': 4},
-    {'name': 'madeira-outro-mac', 'cores': 4}
+    {'name': 'madeira-outro-mac', 'cores': 4},
     {'name': 'david-mac', 'cores': 25},
 ]
 
