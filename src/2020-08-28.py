@@ -13,7 +13,8 @@ import simulation
 workers = [
     {'name': 'madeira-desktop', 'cores': 18},
     {'name': 'madeira-mac', 'cores': 12},
-    {'name': 'gauy-desktop', 'cores': 8},
+    {'name': 'gauy-desktop', 'cores': 7},
+    {'name': 'caminho-impar-nao-usar', 'cores': 1},
     {'name': 'gauy-irmao-1', 'cores': 5},
     {'name': 'gauy-irmao-2', 'cores': 4},
     {'name': 'lu-mac', 'cores': 4},
