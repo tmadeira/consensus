@@ -18,7 +18,7 @@ with open('fig1.csv', 'w') as f:
             stream = os.popen('./simulator %s %d %d %f %d' % (tp, n, times, p, threads))
             results = list(map(int, stream.read().strip().split('\n')))
             print(time.time() - start, 'seconds elapsed.')
-            print('finished', tp, n)
+            print('finished', tp, n, p)
             print('avg:', np.mean(results))
             print('stdev:', np.std(results))
             print('median:', np.median(results))
