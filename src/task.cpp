@@ -135,6 +135,62 @@ void run_torus(task_t t) {
   free(B);
 }
 
+void run_clique(task_t t) {
+  int i;
+  double old, current, r;
+  int counters[4], k;
+
+  default_random_engine engine(t.seed);
+  uniform_int_distribution<int> boolean(0, 1);
+  uniform_real_distribution<double> real(0.0, 1.0);
+
+  int *A = (int *) malloc(sizeof(int) * t.n);
+  int *B = (int *) malloc(sizeof(int) * t.n);
+
+  // Generate random initial array.
+  generate(A, A+t.n, bind(boolean, engine));
+
+  // Fill memory with same initial value.
+  for (i = 0; i < t.n; i++) {
+    A[i] = (A[i] << 1) + A[i];
+  }
+
+  int count = 0;
+  while (1) {
+    if (consensus(A, t.n)) {
+      break;
+    }
+
+    copy(A, A+t.n, B);
+
+    counters[0] = counters[1] = counters[2] = counters[3] = 0;
+    for (i = 0; i < t.n; i++) {
+      counters[A[i]]++;
+    }
+
+    for (i = 0; i < t.n; i++) {
+      k = A[i];
+      counters[k]--;
+
+      old = counters[2] + counters[3];
+      current = counters[1] + counters[3];
+
+      r = real(engine);
+      A[i] = (A[i] << 1) | ((t.n-1) * r <= old*(1-t.mem) + current*t.mem);
+      A[i] %= 4;
+
+      counters[k]++;
+    }
+
+    count++;
+  }
+
+  printf("%d\n", count);
+
+  free(A);
+  free(B);
+}
+
 void run_task(task_t t) {
   switch (t.tp) {
   case CYCLE:
@@ -142,6 +198,9 @@ void run_task(task_t t) {
     break;
   case TORUS:
     run_torus(t);
+    break;
+  case CLIQUE:
+    run_clique(t);
     break;
   default:
     printf("Skipping task with unknown type.\n");

@@ -69,7 +69,7 @@ void run(int tp, int n, int times, double mem, int num_threads, unsigned seed) {
 
 void usage(const char *cmd) {
   fprintf(stderr, "Usage: %s <tp> <n> <times> <memory> [<threads>] [<seed>]\n", cmd);
-  fprintf(stderr, "<tp> options: cycle, torus\n");
+  fprintf(stderr, "<tp> options: cycle, torus, clique\n");
   exit(1);
 }
 
@@ -83,6 +83,8 @@ int main(int argc, char *argv[]) {
     tp = CYCLE;
   } else if (!strcmp("torus", argv[1])) {
     tp = TORUS;
+  } else if (!strcmp("clique", argv[1])) {
+    tp = CLIQUE;
   } else {
     usage(argv[0]);
   }
