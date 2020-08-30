@@ -92,8 +92,8 @@ int main(int argc, char *argv[]) {
   double mem = atof(argv[4]);
 
   int threads = 1;
-  if (argc > 4) {
-    threads = atoi(argv[4]);
+  if (argc > 5) {
+    threads = atoi(argv[5]);
   }
 
   unsigned seed = 0;
