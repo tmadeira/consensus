@@ -22,7 +22,7 @@ void run(int tp, int n, int times, double mem, int num_threads, unsigned seed) {
 
   // Create task queue.
   queue_t Q;
-  queue_init(&Q, times + num_threads);
+  queue_init(&Q, times + num_threads + 1);
 
   // Allocate consumers.
   consumer_t *consumers;
