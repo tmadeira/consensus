@@ -4,6 +4,7 @@
 #define CYCLE 0
 #define TORUS 1
 #define CLIQUE 2
+#define PATH 3
 
 typedef struct {
   int tp;
