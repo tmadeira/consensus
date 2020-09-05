@@ -8,12 +8,12 @@ times = 100000
 
 threads = multiprocessing.cpu_count()
 
-for tp in ['cycle', 'clique', 'torus']:
+for tp in ['path', 'cycle', 'clique', 'torus']:
     start = time.time()
 
     with open('fig2-%s.csv' % tp, 'w') as f:
         writer = csv.writer(f)
-        for m in range(3, 52, 2):
+        for m in range(3, 40, 2):
             n = m*m
             for p in [0.8, 0.9, 1]:
                 stream = os.popen('./simulator %s %d %d %f %d' % (tp, n, times, p, threads))
