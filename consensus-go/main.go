@@ -7,35 +7,75 @@ import (
 	"strconv"
 )
 
-func produce(tasks chan<- task_t, n, times int, p float64) {
+func produce(tt chan<- task, tp string, n, times int, p float64, seed int) {
 	for i := 0; i < times; i++ {
-		tasks <- task_t{
+		tt <- task{
+			tp:   tp,
 			n:    n,
 			p:    p,
-			seed: i,
+			seed: seed + i,
 		}
 	}
-	close(tasks)
+	close(tt)
+}
+
+func usage(cmd string) {
+	fmt.Printf("Usage: %s <tp> <n> <times> <memory> [<threads>] [<seed>]\n", cmd)
+	os.Exit(1)
 }
 
 func main() {
-	if len(os.Args) != 4 {
-		fmt.Printf("Usage: %s <n> <times> <p>\n", os.Args[0])
-		return
+	if len(os.Args) < 5 {
+		usage(os.Args[0])
 	}
 
-	n, _ := strconv.Atoi(os.Args[1])
-	times, _ := strconv.Atoi(os.Args[2])
-	p, _ := strconv.ParseFloat(os.Args[3], 64)
+	tp := os.Args[1]
 
-	tasks := make(chan task_t)
-	done := make(chan bool)
+	n, err := strconv.Atoi(os.Args[2])
+	if err != nil {
+		fmt.Println(err)
+		usage(os.Args[0])
+	}
 
-	go produce(tasks, n, times, p)
+	times, err := strconv.Atoi(os.Args[3])
+	if err != nil {
+		fmt.Println(err)
+		usage(os.Args[0])
+	}
+
+	p, err := strconv.ParseFloat(os.Args[4], 64)
+	if err != nil {
+		fmt.Println(err)
+		usage(os.Args[0])
+	}
 
 	threads := runtime.NumCPU()
+	if len(os.Args) > 5 {
+		var err error
+		threads, err = strconv.Atoi(os.Args[5])
+		if err != nil {
+			fmt.Println(err)
+			usage(os.Args[0])
+		}
+	}
+
+	seed := 0
+	if len(os.Args) > 6 {
+		var err error
+		seed, err = strconv.Atoi(os.Args[6])
+		if err != nil {
+			fmt.Println(err)
+			usage(os.Args[0])
+		}
+	}
+
+	tt := make(chan task)
+	done := make(chan bool)
+
+	go produce(tt, tp, n, times, p, seed)
+
 	for i := 0; i < threads; i++ {
-		go consume(i, tasks, done)
+		go consume(i, tt, done)
 	}
 
 	for i := 0; i < threads; i++ {
