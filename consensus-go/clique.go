@@ -7,11 +7,7 @@ func clique(t task) int {
 	A, _ := initial(t.n, r)
 
 	count := 0
-	for {
-		if consensus(A) {
-			break
-		}
-
+	for !consensus(A) {
 		counters := make([]int, 4)
 		for _, a := range A {
 			counters[a]++

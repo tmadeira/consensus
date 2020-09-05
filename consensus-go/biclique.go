@@ -7,11 +7,7 @@ func biclique(t task) int {
 	A, _ := initial(t.n, r)
 
 	count := 0
-	for {
-		if consensus(A) {
-			break
-		}
-
+	for !consensus(A) {
 		m := t.n / 2
 
 		S, T := make([]int, 4), make([]int, 4)

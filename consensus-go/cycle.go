@@ -7,11 +7,7 @@ func cycle(t task) int {
 	A, B := initial(t.n, r)
 
 	count := 0
-	for {
-		if consensus(A) {
-			break
-		}
-
+	for !consensus(A) {
 		copy(B, A)
 
 		for i := 0; i < t.n; i++ {
