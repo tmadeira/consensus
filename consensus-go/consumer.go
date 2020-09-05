@@ -8,6 +8,8 @@ func consume(id int, tasks <-chan task, done chan<- bool) {
 		switch t.tp {
 		case "cycle":
 			c = cycle(t)
+		case "path":
+			c = path(t)
 		default:
 			fmt.Printf("Unknown type '%v'.\n", t.tp)
 			continue
