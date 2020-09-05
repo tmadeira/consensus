@@ -7,6 +7,7 @@ import (
 
 type task_t struct {
 	n    int
+	p    float64
 	seed int
 }
 
@@ -42,7 +43,7 @@ func run(t task_t) {
 
 			rnd := r.Float64()
 			A[i] = A[i] << 1
-			if 2.0*rnd < float64(old+cur) {
+			if 2.0*rnd < float64(old)*(1-t.p)+float64(cur)*t.p {
 				A[i] |= 1
 			}
 			A[i] %= 4
