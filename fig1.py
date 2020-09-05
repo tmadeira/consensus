@@ -4,7 +4,7 @@ import numpy as np
 import os
 import time
 
-n = 441
+n = 1023
 times = 1000
 
 threads = multiprocessing.cpu_count()
@@ -13,7 +13,7 @@ start = time.time()
 
 with open('fig1.csv', 'w') as f:
     writer = csv.writer(f)
-    for tp in ['clique', 'torus', 'cycle']:
+    for tp in ['biclique', 'bintree', 'clique', 'cycle', 'path', 'torus']:
         for p in np.linspace(0.1, 1.0, num=30):
             stream = os.popen('./simulator %s %d %d %f %d' % (tp, n, times, p, threads))
             results = list(map(int, stream.read().strip().split('\n')))
@@ -23,4 +23,4 @@ with open('fig1.csv', 'w') as f:
             print('stdev:', np.std(results))
             print('median:', np.median(results))
             print('')
-            writer.writerow([tp, n, p, np.mean(results), np.std(results), np.mean(results)] + results)
+            writer.writerow([tp, n, p, np.mean(results), np.std(results), np.median(results)] + results)
