@@ -27,6 +27,7 @@ func initial(n int, r *rand.Rand) ([]int, []int) {
 	A, B := make([]int, n), make([]int, n)
 	for i := 0; i < n; i++ {
 		A[i] = r.Intn(2)
+		A[i] = (A[i] << 1) + A[i]
 	}
 
 	copy(B, A)
