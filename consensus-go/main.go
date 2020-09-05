@@ -21,6 +21,7 @@ func produce(tt chan<- task, tp string, n, times int, p float64, seed int) {
 
 func usage(cmd string) {
 	fmt.Printf("Usage: %s <tp> <n> <times> <memory> [<threads>] [<seed>]\n", cmd)
+	fmt.Printf("Supported types: biclique, bintree, clique, cycle, path, torus.\n")
 	os.Exit(1)
 }
 
