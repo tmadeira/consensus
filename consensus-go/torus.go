@@ -29,12 +29,12 @@ func torus(t task) int {
 		for i := 0; i < x; i++ {
 			for j := 0; j < y; j++ {
 				edges := []int{
-					i*x + (j+y-1)%y,
-					i*x + (j+1)%y,
-					((i+x-1)%x)*x + j,
-					((i+1)%x)*x + j,
+					i*y + (j+y-1)%y,
+					i*y + (j+1)%y,
+					((i+x-1)%x)*y + j,
+					((i+1)%x)*y + j,
 				}
-				A[i*x+j] = update(B, r.Float64(), i*j+j, edges, t.p)
+				A[i*y+j] = update(B, r.Float64(), i*y+j, edges, t.p)
 			}
 		}
 
