@@ -8,6 +8,8 @@ func consume(id int, tasks <-chan task, done chan<- bool) {
 		switch t.tp {
 		case "biclique":
 			c = biclique(t)
+		case "bintree":
+			c = bintree(t)
 		case "clique":
 			c = clique(t)
 		case "cycle":

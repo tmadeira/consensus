@@ -14,10 +14,6 @@ func torus(t task) int {
 	y := x
 
 	if x*y != t.n {
-		if t.n&(t.n+1) != 0 {
-			panic("n must be a perfect square or n+1 must be a power of two")
-		}
-
 		x = int(math.Sqrt(float64(t.n)))
 		y = x + 2
 
