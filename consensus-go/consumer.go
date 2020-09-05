@@ -14,6 +14,8 @@ func consume(id int, tasks <-chan task, done chan<- bool) {
 			c = cycle(t)
 		case "path":
 			c = path(t)
+		case "torus":
+			c = torus(t)
 		default:
 			fmt.Printf("Unknown type '%v'.\n", t.tp)
 			continue
