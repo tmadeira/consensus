@@ -24,4 +24,4 @@ for tp in ['cycle', 'clique', 'torus']:
                 print('stdev:', np.std(results))
                 print('median:', np.median(results))
                 print('')
-                writer.writerow([tp, n, p, np.mean(results), np.std(results), np.mean(results)] + results)
+                writer.writerow([tp, n, p, np.mean(results), np.std(results), np.median(results)] + results)
