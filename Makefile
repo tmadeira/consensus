@@ -1,9 +1,5 @@
-CXX=g++
-CXXFLAGS=-pedantic -Wall -O3 -std=c++11
-LIBS=-lpthread
-
-simulator: src/main.o src/consumer.o src/queue.o src/task.o
-	$(CXX) -o $@ $^ $(CXXFLAGS) $(LIBS)
+simulator:
+	cd consensus-go && go build . && mv consensus-go ../simulator
 
 clean:
-	rm -rf simulator src/*.o
+	rm -rf simulator
