@@ -11,7 +11,7 @@ threads = multiprocessing.cpu_count()
 
 start = time.time()
 
-with open('fig1.csv', 'w') as f:
+with open('data/fig1.csv', 'w') as f:
     writer = csv.writer(f)
     for tp in ['biclique', 'bintree', 'clique', 'cycle', 'path', 'torus']:
         for p in np.linspace(0.1, 1.0, num=30):

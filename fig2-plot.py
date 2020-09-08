@@ -11,7 +11,7 @@ tps = ['biclique', 'bintree', 'clique', 'cycle', 'torus', 'path']
 plt.plot(list(range(0, 1600)), [1] * 1600, 'k')
 
 for tp in tps:
-    with gzip.open('fig2-%s.csv.gz' % tp, 'rt') as f:
+    with gzip.open('data/fig2-%s.csv.gz' % tp, 'rt') as f:
         c = csv.reader(f)
         x = []
         y = []
