@@ -1,5 +1,5 @@
-simulator:
-	cd consensus-go && go build . && mv consensus-go ../simulator
+simulator: cmd/*
+	cd cmd/simulator && go build -o ../../simulator .
 
 clean:
 	rm -rf simulator
