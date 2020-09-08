@@ -5,7 +5,7 @@ import os
 import time
 
 n = 1023
-times = 1000
+times = 4000
 
 threads = multiprocessing.cpu_count()
 
