@@ -29,7 +29,7 @@ for tp in ['bintree']:
             run(tp, n, writer)
 
 # Odd perfect squares - n in range [9, 2025].
-for tp in ['biclique', 'clique', 'cycle', 'path', 'torus']:
+for tp in ['biclique', 'clique', 'cycle', 'torus']:
     with open('data/fig2-%s.csv' % tp, 'w') as f:
         writer = csv.writer(f)
         for m in range(3, 46, 2):

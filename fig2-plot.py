@@ -6,9 +6,9 @@ import numpy as np
 colors = 'rgbcmy'
 col = 0
 
-tps = ['biclique', 'bintree', 'clique', 'cycle', 'torus', 'path']
+tps = ['biclique', 'bintree', 'clique', 'cycle', 'torus']
 
-plt.plot(list(range(0, 1600)), [1] * 1600, 'k')
+plt.plot(list(range(0, 2050)), [1] * 2050, 'k')
 
 for tp in tps:
     with gzip.open('data/fig2-%s.csv.gz' % tp, 'rt') as f:
