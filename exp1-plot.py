@@ -6,7 +6,7 @@ buckets = 30
 
 data = {}
 
-with open('data/fig1.csv') as f:
+with open('data/exp1.csv') as f:
     c = csv.reader(f)
     for row in c:
         [tp, n, p, mean] = row[:4]

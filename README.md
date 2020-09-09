@@ -1,4 +1,4 @@
-consensus memory games
+Memory consensus games
 ==
 
 To compile:
@@ -6,6 +6,9 @@ To compile:
 ```
 $ make
 ```
+
+You must have [Go](https://golang.org/). The code was tested with go version
+go1.15.1 linux/amd64.
 
 To run:
 
@@ -19,5 +22,5 @@ to current state (i.e., use `1.0` to make an experiment with no memory),
 `<threads>` is the number of threads the simulator should use, `<seed>` is the
 random seed.
 
-See fig1.py for an example of how to use the simulator to produce some useful
-data. See fig1-plot.py for an example of how to plot data computed by fig1.py.
+See exp1.py for an example of how to use the simulator to produce some useful
+data. See exp1-plot.py for an example of how to plot data computed by exp1.py.

@@ -22,7 +22,7 @@ def run(tp, n, writer):
 
 # Powers of two (9) - n in range [7, 2047].
 for tp in ['bintree']:
-    with open('data/fig2-%s.csv' % tp, 'w') as f:
+    with open('data/exp2-%s.csv' % tp, 'w') as f:
         writer = csv.writer(f)
         for m in range(3, 12):
             n = 2**m-1
@@ -30,7 +30,7 @@ for tp in ['bintree']:
 
 # Odd perfect squares - n in range [9, 2025].
 for tp in ['biclique', 'clique', 'cycle', 'torus']:
-    with open('data/fig2-%s.csv' % tp, 'w') as f:
+    with open('data/exp2-%s.csv' % tp, 'w') as f:
         writer = csv.writer(f)
         for m in range(3, 46, 2):
             n = m*m

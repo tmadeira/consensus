@@ -11,7 +11,7 @@ tps = ['biclique', 'bintree', 'clique', 'cycle', 'torus']
 plt.plot(list(range(0, 2050)), [1] * 2050, 'k')
 
 for tp in tps:
-    with gzip.open('data/fig2-%s.csv.gz' % tp, 'rt') as f:
+    with gzip.open('data/exp2-%s.csv.gz' % tp, 'rt') as f:
         c = csv.reader(f)
         x = []
         y = []
@@ -30,6 +30,6 @@ for tp in tps:
         col += 1
 
 plt.legend(['baseline'] + tps, loc='upper right')
-plt.title('fig. 2 (p=0.9, times=10000)')
+plt.title('exp. 2 (p=0.9, times=10000)')
 plt.show()
 
