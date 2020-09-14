@@ -1,8 +1,8 @@
-package main
+package consensus
 
 import "math/rand"
 
-func bintree(t task) int {
+func bintree(t Task) int {
 	r := rand.New(rand.NewSource(int64(t.seed)))
 	A, B := initial(t.n, r)
 

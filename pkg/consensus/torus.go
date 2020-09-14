@@ -1,4 +1,4 @@
-package main
+package consensus
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"math/rand"
 )
 
-func torus(t task) int {
+func torus(t Task) int {
 	r := rand.New(rand.NewSource(int64(t.seed)))
 	A, B := initial(t.n, r)
 

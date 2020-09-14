@@ -1,8 +1,8 @@
-package main
+package consensus
 
 import "math/rand"
 
-func clique(t task) int {
+func clique(t Task) int {
 	r := rand.New(rand.NewSource(int64(t.seed)))
 	A, _ := initial(t.n, r)
 

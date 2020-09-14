@@ -5,19 +5,9 @@ import (
 	"os"
 	"runtime"
 	"strconv"
-)
 
-func produce(tt chan<- task, tp string, n, times int, p float64, seed int) {
-	for i := 0; i < times; i++ {
-		tt <- task{
-			tp:   tp,
-			n:    n,
-			p:    p,
-			seed: seed + i,
-		}
-	}
-	close(tt)
-}
+	"blind/pkg/consensus"
+)
 
 func usage(cmd string) {
 	fmt.Printf("Usage: %s <tp> <n> <times> <memory> [<threads>] [<seed>]\n", cmd)
@@ -70,16 +60,5 @@ func main() {
 		}
 	}
 
-	tt := make(chan task)
-	done := make(chan bool)
-
-	go produce(tt, tp, n, times, p, seed)
-
-	for i := 0; i < threads; i++ {
-		go consume(i, tt, done)
-	}
-
-	for i := 0; i < threads; i++ {
-		<-done
-	}
+	consensus.Run(tp, n, times, p, threads, seed)
 }

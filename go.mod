@@ -1,3 +1,3 @@
-module github.com/tmadeira/consensus
+module blind
 
 go 1.15

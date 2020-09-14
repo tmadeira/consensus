@@ -1,8 +1,8 @@
-package main
+package consensus
 
 import "math/rand"
 
-func biclique(t task) int {
+func biclique(t Task) int {
 	r := rand.New(rand.NewSource(int64(t.seed)))
 	A, _ := initial(t.n, r)
 
