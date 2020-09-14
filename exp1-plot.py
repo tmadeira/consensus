@@ -1,4 +1,5 @@
 import csv
+import gzip
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -6,7 +7,7 @@ def run():
     buckets = 30
     data = {}
 
-    with open('data/exp1.csv') as f:
+    with gzip.open('data/exp1.csv', 'rt') as f:
         c = csv.reader(f)
         for row in c:
             [tp, n, p, mean] = row[:4]
