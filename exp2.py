@@ -4,10 +4,7 @@ import numpy as np
 import os
 import time
 
-times = 10000
-threads = multiprocessing.cpu_count()
-
-def run(tp, n, writer):
+def run_experiment(tp, n, writer):
     start = time.time()
     for p in [0.9, 1]:
         stream = os.popen('./simulator %s %d %d %f %d' % (tp, n, times, p, threads))
@@ -20,18 +17,25 @@ def run(tp, n, writer):
         print('')
         writer.writerow([tp, n, p, np.mean(results), np.std(results), np.median(results)] + results)
 
-# Powers of two (9) - n in range [7, 2047].
-for tp in ['bintree']:
-    with open('data/exp2-%s.csv' % tp, 'w') as f:
-        writer = csv.writer(f)
-        for m in range(3, 12):
-            n = 2**m-1
-            run(tp, n, writer)
+def run():
+    times = 10000
+    threads = multiprocessing.cpu_count()
 
-# Odd perfect squares - n in range [9, 2025].
-for tp in ['biclique', 'clique', 'cycle', 'torus']:
-    with open('data/exp2-%s.csv' % tp, 'w') as f:
-        writer = csv.writer(f)
-        for m in range(3, 46, 2):
-            n = m*m
-            run(tp, n, writer)
+    # Powers of two (9) - n in range [7, 2047].
+    for tp in ['bintree']:
+        with open('data/exp2-%s.csv' % tp, 'w') as f:
+            writer = csv.writer(f)
+            for m in range(3, 12):
+                n = 2**m-1
+                run_experiment(tp, n, writer)
+
+    # Odd perfect squares - n in range [9, 2025].
+    for tp in ['biclique', 'clique', 'cycle', 'torus']:
+        with open('data/exp2-%s.csv' % tp, 'w') as f:
+            writer = csv.writer(f)
+            for m in range(3, 46, 2):
+                n = m*m
+                run_experiment(tp, n, writer)
+
+if __name__ == '__main__':
+    run()
