@@ -29,12 +29,10 @@ def run():
                 elif p == 1:
                     p10 = results
 
+        f = plt.figure()
         plt.hist([p09, p10], bins=bins, histtype='bar')
-        #plt.hist(p10, bins=bins, density=True, histtype='step')
-
         plt.legend(['0.9', '1.0'])
-        plt.title('exp. 2 (%s)' % tp)
-        plt.show()
+        f.savefig('plots/dist-%s.pdf' % tp, bbox_inches='tight')
 
 if __name__ == '__main__':
     run()
