@@ -29,6 +29,7 @@ def run():
                 elif p == 1:
                     p10 = results
 
+        print(tp, 'min =', np.min([p09, p10]), 'max =', np.max([p09, p10]))
         f = plt.figure()
         plt.hist([p09, p10], bins=bins, histtype='bar')
         plt.legend(['0.9', '1.0'])
