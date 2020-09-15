@@ -27,3 +27,5 @@ biclique, bintree, clique, cycle, path, torus.
 
 See exp1.py for an example of how to use the simulator to produce some useful
 data. See exp1-plot.py for an example of how to plot data computed by exp1.py.
+
+See plots/ for generated plots.
