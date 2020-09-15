@@ -2,8 +2,12 @@ import csv
 import gzip
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 
-def run():
+def run(measure):
+    if measure != 'mean' and measure != 'median':
+        print('<measure> must be "mean" or "median"')
+        quit()
     colors = 'rgbcmy'
     col = 0
 
@@ -17,15 +21,17 @@ def run():
             x = []
             y = []
             for row in c:
-                [n, p, mean] = row[1:4]
+                [n, p, mean, _, median] = row[1:6]
                 n = int(n)
                 p = float(p)
-                mean = float(mean)
+                val = float(mean)
+                if measure == 'median':
+                    val = float(median)
                 if p == 0.9:
                     x.append(n)
-                    y.append(mean)
+                    y.append(val)
                 elif p == 1:
-                    y[len(y)-1] /= mean
+                    y[len(y)-1] /= val
 
             plt.plot(x, y, colors[col])
             col += 1
@@ -35,4 +41,7 @@ def run():
     plt.show()
 
 if __name__ == '__main__':
-    run()
+    measure = 'mean'
+    if len(sys.argv) > 1:
+        measure = sys.argv[1]
+    run(measure)

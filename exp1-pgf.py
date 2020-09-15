@@ -6,7 +6,7 @@ def run():
     buckets = 30
     data = {}
 
-    with gzip.open('data/exp1.csv', 'rt') as f:
+    with gzip.open('data/exp1.csv.gz', 'rt') as f:
         c = csv.reader(f)
         for row in c:
             [tp, n, p, mean] = row[:4]
