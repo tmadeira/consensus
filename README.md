@@ -1,5 +1,16 @@
-Memory consensus games
+The Influence of Memory in Multi-Agent Consensus
 ==
+
+David Kohan Marzagão, Luciana Basualdo Bonatto, Tiago Madeira, Marcelo Matheus
+Gauy, Peter McBurney
+
+This repository contains code, data and plots used in an accepted paper that
+will be published in the 35th AAAI Conference on Artificial Intelligence (AAAI
+2021).
+
+_Link for the final version of the paper coming soon._
+
+### Usage
 
 To compile:
 
