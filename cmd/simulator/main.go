@@ -6,7 +6,7 @@ import (
 	"runtime"
 	"strconv"
 
-	"blind/pkg/consensus"
+	"github.com/tmadeira/consensus/pkg/consensus"
 )
 
 func usage(cmd string) {
