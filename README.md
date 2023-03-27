@@ -6,9 +6,7 @@ Gauy, Peter McBurney
 
 This repository contains code, data and plots used in an accepted paper that
 will be published in the 35th AAAI Conference on Artificial Intelligence (AAAI
-2021).
-
-_Link for the final version of the paper coming soon._
+2021). The published paper can be found in: https://ojs.aaai.org/index.php/AAAI/article/view/17342
 
 ### Usage
 
