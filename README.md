@@ -1,12 +1,11 @@
-The Influence of Memory in Multi-Agent Consensus
-==
+# The Influence of Memory in Multi-Agent Consensus
 
-David Kohan Marzagão, Luciana Basualdo Bonatto, Tiago Madeira, Marcelo Matheus
-Gauy, Peter McBurney
+_By David Kohan Marzagão, Luciana Basualdo Bonatto, Tiago Madeira, Marcelo Matheus
+Gauy, Peter McBurney._
 
-This repository contains code, data and plots used in an accepted paper that
-will be published in the 35th AAAI Conference on Artificial Intelligence (AAAI
-2021). The published paper can be found in: https://ojs.aaai.org/index.php/AAAI/article/view/17342
+This repository contains code, data and plots used in a paper that has been published
+in the 35th AAAI Conference on Artificial Intelligence (AAAI 2021). The published
+paper can be found in: https://ojs.aaai.org/index.php/AAAI/article/view/17342
 
 ### Usage
 
@@ -34,7 +33,7 @@ memory), `<threads>` is the number of threads the simulator should use,
 **Supported network structures:**
 biclique, bintree, clique, cycle, path, torus.
 
-See exp1.py for an example of how to use the simulator to produce some useful
-data. See exp1-plot.py for an example of how to plot data computed by exp1.py.
+See `exp1.py` for an example of how to use the simulator to produce some useful
+data. See `exp1-plot.py` for an example of how to plot data computed by `exp1.py`.
 
-See plots/ for generated plots.
+See `plots/` for generated plots.
